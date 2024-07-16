@@ -22,6 +22,10 @@ application built in [Angular](https://angular.dev).
 
 ## Run
 
+The app (frontend) will start on [https://localhost:4200](https://localhost:4200). `/` and `/:id` are available for testing.
+
+The api (backend) start on [https://localhost:3000/api](https://localhost:3000/api). `/pokemon` and `/pokemon/:id` are available for testing.
+
 ### Running on Docker
 
 You can run both apps using Docker.
@@ -46,14 +50,10 @@ cd api/
 npm run start
 ```
 
-It will start the app on [https://localhost:4200](https://localhost:4200). `/` and `/:id` are available for testing.
-
 ```shell
 cd app/
 npm run start
 ```
-
-It will start the api on [https://localhost:3000/api](https://localhost:4200/api). `/pokemon` and `/pokemon/:id` are available for testing.
 
 ## Testing
 
