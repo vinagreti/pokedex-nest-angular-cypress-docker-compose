@@ -1,0 +1,5 @@
+<ul class="flex gap-4 flex-wrap justify-center">
+  <li *ngFor="let pokemon of pokemons; trackBy: trackByFn">
+    <app-pokemon-card [pokemonListItem]="pokemon" />
+  </li>
+</ul>

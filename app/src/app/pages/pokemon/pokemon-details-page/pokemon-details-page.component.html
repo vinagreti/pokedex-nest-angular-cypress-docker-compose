@@ -1,0 +1,22 @@
+<div
+  class="bg-gray-200 h-full overflow-auto p-2"
+  *ngIf="pokemon$ | async as pokemon; else loading"
+>
+  <h2
+    class="text-3xl flex justify-between uppercase items-center"
+    [ariaLabel]="'Pokemon name: ' + pokemon.name"
+  >
+    <div class="flex gap-2 items-center">
+      <app-button [routerLink]="['/']"
+        ><app-icon icon="arrow_back"
+      /></app-button>
+      <span id="pokemon-name">
+        {{ pokemon.name }}
+      </span>
+    </div>
+  </h2>
+
+  <app-pokemon-details [pokemon]="pokemon"></app-pokemon-details>
+</div>
+
+<ng-template #loading>Loading...</ng-template>

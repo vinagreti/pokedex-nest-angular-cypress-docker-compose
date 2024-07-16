@@ -1,0 +1,11 @@
+FROM node:alpine
+
+EXPOSE 4200/tcp
+
+WORKDIR /usr/src/app/api
+
+COPY . /usr/src/app
+
+RUN npm install
+
+CMD ["npm", "run", "start"]

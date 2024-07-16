@@ -1,0 +1,37 @@
+<ng-template #loading> Loading... </ng-template>
+
+@defer (on viewport;) {
+<a
+  [routerLink]="[(pokemon$ | async)?.name]"
+  routerLinkActive="router-link-active"
+  class="block w-32 h-32 border rounded-lg"
+>
+  <div
+    class="flex flex-col justify-between items-center h-full"
+    *ngIf="pokemon$ | async as pokemon; else loading"
+  >
+    <div class="flex justify-end w-full" id="pokemon-card-id">
+      #{{ pokemon.id }}
+    </div>
+    <img
+      [src]="pokemon.sprites.front_default"
+      [alt]="pokemon.name + ' pokemon image'"
+      class="max-w-20 max-h-20 mt-[-12px] mb-[-12px] z-10"
+    />
+
+    <div
+      id="pokemon-card-name"
+      class="bg-gray-200 p-2 h-14 w-full flex flex-col justify-end items-center rounded-t-lg uppercase"
+    >
+      {{ pokemon.name }}
+    </div>
+  </div>
+</a>
+} @placeholder {
+<a
+  [routerLink]="[(pokemon$ | async)?.name]"
+  routerLinkActive="router-link-active"
+  class="block w-32 h-32 border rounded-lg"
+>
+</a>
+}

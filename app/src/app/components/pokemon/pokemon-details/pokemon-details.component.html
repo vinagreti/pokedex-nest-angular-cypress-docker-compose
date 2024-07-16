@@ -1,0 +1,84 @@
+<div class="flex flex-col rounded-t-lg">
+  <div class="flex justify-center mb-[-50px] z-10">
+    <img
+      class="h-[200px]"
+      [src]="pokemon.sprites.other['official-artwork'].front_default"
+      [alt]="pokemon.name + ' image'"
+      [title]="pokemon.name + ' image'"
+      id="pokemon-image"
+    />
+  </div>
+
+  <div class="bg-white rounded-t-lg min-h-80 p-4 flex flex-col gap-8">
+    <div>
+      <div class="text-lg text-right" id="pokemon-id">#{{ pokemon.id }}</div>
+
+      <div class="flex flex-wrap gap-2 justify-center p-2">
+        <app-pin
+          *ngFor="let type of pokemon.types; let i = index"
+          [color]="colorsByType[type.type.name].color"
+          [backgroundColor]="colorsByType[type.type.name].backgroundColor"
+          id="pokemon-type-{{ i }}"
+          >{{ type.type.name }}</app-pin
+        >
+      </div>
+    </div>
+
+    <div class="flex justify-center text-2xl text-gray-400">About</div>
+
+    <div class="flex justify-around">
+      <div class="h-24 flex flex-col justify-end items-center gap-4">
+        <div
+          class="font-bold text-lg h-20 flex items-center"
+          id="pokemon-weight"
+        >
+          <app-icon icon="weight" size="32px" />
+          {{ pokemon.weight }} Kg
+        </div>
+        <div>Weight</div>
+      </div>
+      <div class="border"></div>
+      <div class="h-24 flex flex-col justify-end items-center gap-4">
+        <div
+          class="font-bold text-lg h-20 flex items-center"
+          id="pokemon-height"
+        >
+          <app-icon icon="straighten" size="32px" />
+          {{ pokemon.height }} m
+        </div>
+        <div>Height</div>
+      </div>
+      <div class="border"></div>
+      <div class="h-24 flex flex-col justify-end items-center gap-4">
+        <div class="flex flex-col justify-center">
+          <div *ngFor="let ability of pokemon.abilities; let i = index">
+            <div
+              class="font-bold text-lg text-right"
+              id="pokemon-ability-{{ i }}"
+            >
+              {{ ability.ability.name }}
+            </div>
+          </div>
+        </div>
+        <div>Abilities</div>
+      </div>
+    </div>
+
+    <div class="flex justify-center text-2xl text-gray-400">Base Stats</div>
+
+    <div class="flex flex-col gap-2">
+      <div *ngFor="let stat of pokemon.stats; let i = index" class="flex gap-2">
+        <div
+          class="w-8 flex justify-end"
+          [title]="stat.stat.name"
+          id="{{ 'pokemon-stat-label-' + i }}"
+        >
+          {{ statAbbreviation[stat.stat.name] }}
+        </div>
+        <div class="grow" id="{{ 'pokemon-stat-progress-' + i }}">
+          <app-progress [total]="stat.base_stat"></app-progress>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

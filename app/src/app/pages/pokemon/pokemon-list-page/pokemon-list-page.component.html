@@ -1,0 +1,41 @@
+<div
+  *ngIf="filteredPokemons$ | async as pokemons; else loading"
+  class="flex flex-col gap-4"
+>
+  <div class="w-full">
+    <input
+      class="block w-[200px] m-auto border rounded p-1"
+      type="text"
+      name="search"
+      placeholder="type here to search"
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="onSerachTermChanged()"
+    />
+  </div>
+
+  <app-pokemon-list [pokemons]="pokemons"></app-pokemon-list>
+
+  <div class="flex justify-center">
+    <app-button
+      (click)="loadMore()"
+      [disabled]="(loading$ | async)!"
+      class="w-32"
+      id="load-more"
+    >
+      {{ (loading$ | async) ? "Loading..." : "Load More" }}
+    </app-button>
+  </div>
+</div>
+
+<ng-template #loading>Loading... </ng-template>
+
+<div
+  class="absolute z-20 top-[60px] left-0"
+  [style]="
+    outlet.isActivated
+      ? { width: '100svw', height: '100svh', minWidth: '360px' }
+      : {}
+  "
+>
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>

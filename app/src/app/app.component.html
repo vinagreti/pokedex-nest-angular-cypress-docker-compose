@@ -1,0 +1,19 @@
+<div class="h-full flex flex-col">
+  <div class="min-h-[60px] bg-red-700 text-white">
+    <div class="max-w-[800px] m-auto p-2 flex items-center h-full">
+      <div class="flex gap-2 items-center">
+        <div class="flex items-center">
+          <app-icon icon="pokeball" size="20px" />
+        </div>
+        <a routerLink="/" class="text-xl text-inherit">
+          <h1 class="flex items-center">Pokédex</h1>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="grow overflow-auto">
+    <div class="p-2 max-w-[800px] m-auto border h-full overflow-auto">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
